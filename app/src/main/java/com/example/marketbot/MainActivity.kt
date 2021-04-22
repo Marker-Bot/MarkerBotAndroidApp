@@ -1,8 +1,11 @@
 package com.example.marketbot
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -35,5 +38,22 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"Робот не найден",Toast.LENGTH_SHORT).show()
             }, 2000)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.information -> {
+                startActivity(Intent(this,AboutUsActivity::class.java))
+                return true
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

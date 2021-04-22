@@ -13,51 +13,93 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/eraseButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/eraser">
+            android:background="@drawable/eraser"
+            android:backgroundTint="@color/purple_500">
 
         </Button>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Erase"
+            android:textColor="@color/black">
 
-        <Button
-            android:id="@+id/sendButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/mail">
+        </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
-        </Button>
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/mail"
+                android:backgroundTint="@color/purple_500">
 
-        <Button
-            android:id="@+id/exitButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/logout"
-            >
+            </Button>
 
-        </Button>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Send"
+                android:textColor="@color/black">
+                >
+
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+            <Button
+                android:id="@+id/exitButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:background="@drawable/logout"
+                android:backgroundTint="@color/purple_500"></Button>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Exit"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black">
+
+
+            </TextView>
+    </LinearLayout>
     </LinearLayout>
 
     <com.example.marketbot.DrawingView
         android:id="@+id/simpleDrawingView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/drawingviewstyle"
-        />
+        android:layout_margin="10dp"
+        android:background="@drawable/drawingviewstyle" />
 </TableLayout>
