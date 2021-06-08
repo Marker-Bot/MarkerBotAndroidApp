@@ -39,6 +39,10 @@ class DrawingView(context: Context?, attrs: AttributeSet) : View(context, attrs)
 
     private var arrayX: ArrayList<Float> = ArrayList()
     private var arrayY: ArrayList<Float> = ArrayList()
+
+    /**
+     * Инициализируем всю основную информацию о View - размер, цвет, стиль и т.д
+     */
     init {
         currentBrushSize = 5F
         lastBrushSize = currentBrushSize
@@ -56,11 +60,27 @@ class DrawingView(context: Context?, attrs: AttributeSet) : View(context, attrs)
 
     }
 
+    /**
+     * Нужно для создания интерфейса
+     * Дает доступ к Canvas
+     *
+     * @param canvas
+     * Canvas предоставляет методы для рисования
+     */
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawBitmap(canvasBitmap!!, 0.0F, 0.0F, canvasPaint)
         canvas?.drawPath(drawPath, drawPaint)
     }
 
+    /**
+     * Метод вызывается каждый раз при изменении холста (Canvas)
+     * В ней создается кэшируемая растровая картинка Bitmap и связанный с ней холст
+     *
+     * @param w
+     * @param h
+     * @param oldw
+     * @param oldh
+     */
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         //create Bitmap of certain w,h
@@ -71,6 +91,13 @@ class DrawingView(context: Context?, attrs: AttributeSet) : View(context, attrs)
 
     }
 
+    /**
+     * Метод обрабатывает нажатия пользователя на холст, добавляет координаты нажатия
+     * в листы и рисует
+     *
+     * @param event
+     * @return
+     */
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val touchX = event.x
         val touchY = event.y
@@ -88,16 +115,30 @@ class DrawingView(context: Context?, attrs: AttributeSet) : View(context, attrs)
             }
             else -> return false
         }
-        //redraw
         invalidate()
         return true
     }
+
+    /**
+     * Метод очищает листы от координат и перезагружает view
+     *
+     */
     fun eraseAll(){
-        Toast.makeText(context, "x = $arrayX[0] y = $arrayY", Toast.LENGTH_LONG).show()
+        //Toast.makeText(context, "x = $arrayX[0] y = $arrayY", Toast.LENGTH_LONG).show()
         drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR)
         arrayX.clear()
         arrayY.clear()
         invalidate();
+    }
+
+    /**
+     * Метод, который создает экземпляр mServer и отправляет данные
+     *
+     */
+    fun sendToServer(){
+        val mServer = mServer()
+        mServer.openConnection()
+        mServer.sendData(arrayX,arrayY)
     }
 }
 

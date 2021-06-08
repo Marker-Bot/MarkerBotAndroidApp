@@ -22,32 +22,50 @@ class MainActivity : AppCompatActivity() {
         val exitButton:Button = findViewById(R.id.exitButton)
         val sendButton:Button = findViewById(R.id.sendButton)
         val mCustomView:DrawingView = findViewById(R.id.simpleDrawingView1)
-        val anim: Animation? = AnimationUtils.loadAnimation(this, R.anim.alpha);
+        val anim: Animation? = AnimationUtils.loadAnimation(this, R.anim.alpha)
+        /**
+         * Кнопка, которая вызывает метод eraseAll() в DrawingView
+         */
         eraseButton.setOnClickListener {
             mCustomView.eraseAll()
             it.startAnimation(anim)
         }
-
+        /**
+         * Кнопка выхода
+         */
         exitButton.setOnClickListener {
             exitProcess(0)
         }
-
+        /**
+         * Кнопка для отправки данных
+         */
         sendButton.setOnClickListener {
             it.startAnimation(anim)
-            Handler().postDelayed({
-                Toast.makeText(this,"Робот не найден",Toast.LENGTH_SHORT).show()
-            }, 2000)
+            mCustomView.sendToServer()
         }
     }
 
+    /**
+     * Метод для создания меню в верхнем правом углу прлиложения
+     *
+     * @param menu
+     * @return
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    /**
+     * Метод, который обрабатывает нажатия пользователя в меню
+     *
+     * @param item
+     * @return
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            //запускаем Activity с информацией о проекте
             R.id.information -> {
                 startActivity(Intent(this,AboutUsActivity::class.java))
                 return true
