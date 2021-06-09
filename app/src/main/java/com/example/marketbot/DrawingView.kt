@@ -64,8 +64,7 @@ class DrawingView(context: Context?, attrs: AttributeSet) : View(context, attrs)
      * Нужно для создания интерфейса
      * Дает доступ к Canvas
      *
-     * @param canvas
-     * Canvas предоставляет методы для рисования
+     * @param canvas Canvas предоставляет методы для рисования
      */
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawBitmap(canvasBitmap!!, 0.0F, 0.0F, canvasPaint)
@@ -95,8 +94,8 @@ class DrawingView(context: Context?, attrs: AttributeSet) : View(context, attrs)
      * Метод обрабатывает нажатия пользователя на холст, добавляет координаты нажатия
      * в листы и рисует
      *
-     * @param event
-     * @return
+     * @param event: Событие касания пользователя
+     * @return boolean случилось ли событие
      */
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val touchX = event.x

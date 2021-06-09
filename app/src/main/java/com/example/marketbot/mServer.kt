@@ -41,8 +41,8 @@ class mServer {
     /**
      * Метод для отправки координат
      *
-     * @param xData
-     * @param yData
+     * @param xData: лист с X коориданатами
+     * @param yData: лист с Y координатами
      */
     fun sendData(xData:ByteArray,yData:ByteArray ){
         if(mSocket == null || mSocket?.isClosed!!) {

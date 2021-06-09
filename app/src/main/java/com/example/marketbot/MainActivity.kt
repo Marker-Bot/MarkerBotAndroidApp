@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Метод для создания меню в верхнем правом углу прлиложения
      *
-     * @param menu
-     * @return
+     * @param menu: Menu
+     * @return: boolean создалось ли меню
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Метод, который обрабатывает нажатия пользователя в меню
      *
-     * @param item
-     * @return
+     * @param item: Элемент меню
+     * @return: boolean нажатие на элемент меню
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
